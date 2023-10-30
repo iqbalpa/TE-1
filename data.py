@@ -4,7 +4,7 @@ import os
 
 # generate dataset
 def generate_random_array(n):
-    return [random.randint(1, 1000) for _ in range(n)]
+    return [random.randint(1, 2**14) for _ in range(n)]
 def generate_sorted_array(n):
     return [i for i in range(1, n+1)]
 def generate_reversed_sorted_array(n):
