@@ -1,22 +1,23 @@
 # # quicksort 2-pivot-block-partitioning
 # # REFERENCES:
 # # https://arxiv.org/abs/1810.12047
-def quicksort(arr, start, end):
-    if start < end:
-        p, q = partition(arr, start, end)
-        quicksort(arr, start, p-1)
-        quicksort(arr, p+1, q-1)
-        quicksort(arr, q+1, end)
-
+def quicksort(arr):
+    stack = []
+    stack.append((0, len(arr) - 1))
+    while stack:
+        start, end = stack.pop()
+        if start < end:
+            p, q = partition(arr, start, end)
+            stack.append((start, p - 1))
+            stack.append((p + 1, q - 1))
+            stack.append((q + 1, end))
 def partition(arr, start, end):
     p = arr[start]
     q = arr[end]
     B = 1024
-
     block = [0] * B
     i, j, k = start+1, start+1, start+1
     num_p, num_q = 0, 0
-
     while k < end:
         t = min(B, end - k)
         c = 0
@@ -41,7 +42,6 @@ def partition(arr, start, end):
             c += 1
         j += num_q
         num_p, num_q = 0, 0
-    
     arr[i - 1], arr[start] = arr[start], arr[i - 1]
     arr[j], arr[end] = arr[end], arr[j]
     return i - 1, j
