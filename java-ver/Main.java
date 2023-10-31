@@ -39,6 +39,7 @@ public class Main {
         Runtime runtime = Runtime.getRuntime();
         List<Integer> msList = new ArrayList<>(list);
         
+        System.gc();
         long beforeUsedMemory = runtime.totalMemory() - runtime.freeMemory();
         long startTime = System.nanoTime();
         List<Integer> sorted = Mergesort.mergesort(msList);
@@ -46,11 +47,12 @@ public class Main {
         long afterUsedMemory = runtime.totalMemory() - runtime.freeMemory();
         
         long memoryUsed = afterUsedMemory - beforeUsedMemory;
+        double memoryUsedInKB = (double) memoryUsed / 1024.0;
         long durationInNano = endTime - startTime;
-        double durationInSeconds = (double) durationInNano / 1_000_000_000.0;
+        double durationInMili = (double) durationInNano / 1_000_000.0;
 
-        System.out.println("Time taken: " + durationInSeconds + " seconds");
-        System.out.println("Memory used: " + memoryUsed + " bytes");
+        System.out.println("Time taken: " + durationInMili + " ms");
+        System.out.println("Memory used: " + memoryUsedInKB + " KB");
     }
 
     // run quicksort
@@ -58,6 +60,7 @@ public class Main {
         Runtime runtime = Runtime.getRuntime();
         List<Integer> qcList = new ArrayList<>(list);
 
+        System.gc();
         long beforeUsedMemory = runtime.totalMemory() - runtime.freeMemory();
         long startTime = System.nanoTime();
         Quicksort.quickSort(qcList);
@@ -65,10 +68,11 @@ public class Main {
         long afterUsedMemory = runtime.totalMemory() - runtime.freeMemory();
 
         long memoryUsed = afterUsedMemory - beforeUsedMemory;
+        double memoryUsedInKB = (double) memoryUsed / 1024.0;
         long durationInNano = endTime - startTime;
-        double durationInSeconds = (double) durationInNano / 1_000_000_000.0;
+        double durationInMili = (double) durationInNano / 1_000_000.0;
 
-        System.out.println("Time taken: " + durationInSeconds + " seconds");
-        System.out.println("Memory used: " + memoryUsed + " bytes");
+        System.out.println("Time taken: " + durationInMili + " ms");
+        System.out.println("Memory used: " + memoryUsedInKB + " KB");
     }
 }
