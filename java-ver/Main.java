@@ -16,22 +16,22 @@ public class Main {
         List<Integer> reversed16 = map.get("reversed16");
         
         // TEST ALGORITHM
-        System.out.println(">>>>>>>>>> 2^16 <<<<<<<<<<");
+        System.out.println(">>>>>>>>>> 2^9 <<<<<<<<<<");
         System.out.println("===== random =====");
         System.out.println(">>> mergesort");
-        runMergesort(random16);
+        runMergesort(random9);
         System.out.println(">>> quicksort");
-        runQuicksort(random16);
+        runQuicksort(random9);
         System.out.println("===== sorted =====");
         System.out.println(">>> mergesort");
-        runMergesort(sorted16);
+        runMergesort(sorted9);
         System.out.println(">>> quicksort");
-        runQuicksort(sorted16);
+        runQuicksort(sorted9);
         System.out.println("===== reversed =====");
         System.out.println(">>> mergesort");
-        runMergesort(reversed16);
+        runMergesort(reversed9);
         System.out.println(">>> quicksort");
-        runQuicksort(reversed16);
+        runQuicksort(reversed9);
     }
 
     // run mergesort

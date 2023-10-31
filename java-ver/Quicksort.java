@@ -24,8 +24,11 @@ public class Quicksort {
     public static List<Integer> partition(List<Integer> arr, int start, int end) {
         int p = arr.get(start);
         int q = arr.get(end);
-        // int B = 1024;
-        int B = (int) (Math.ceil((double) arr.size() / 3)) + 1;
+        // B = ceil(N / 3) + 1
+        int N = (int)((Math.log(arr.size()) / Math.log(2)));
+        int power = (int)(Math.ceil((N / 3)));
+        power += 1;
+        int B = (int)Math.pow(2, power);
         List<Integer> block = new ArrayList<>(B);
         for (int i = 0; i < B; i++) {
             block.add(0);
